@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {
@@ -42,6 +44,7 @@ public class Usuario {
     @NotNull(message = "Atributo Obrigatório")
     private boolean pessoa_fisica;
 
+    @CPF
     private String cpf;
 
     private String cnpj;

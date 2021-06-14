@@ -10,4 +10,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     public Optional<Usuario> findAllByScore(int score);  // RETORNE PONTUAÇÃO 'X'
 
+    public Optional<Usuario> findAllByCpf(String cpf);
+    
 }
