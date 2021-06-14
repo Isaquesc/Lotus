@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {
@@ -42,11 +44,12 @@ public class Usuario {
     @NotNull(message = "Atributo Obrigatório")
     private boolean pessoa_fisica;
 
+    @CPF
     private String cpf;
 
     private String cnpj;
 
-    private int pontuacao;
+    private int score;  // atributo que determina nota de avaliação de uma empresa
 
     // RELACIONAMENTO
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
@@ -146,12 +149,12 @@ public class Usuario {
         this.cnpj = cnpj;
     }
 
-    public int getPontuacao() {
-        return this.pontuacao;
+    public int getScore() {
+        return this.score;
     }
 
-    public void setPontuacao(int pontuacao) {
-        this.pontuacao = pontuacao;
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public List<Postagem> getPostagem() {
@@ -161,7 +164,4 @@ public class Usuario {
     public void setPostagem(List<Postagem> postagem) {
         this.postagem = postagem;
     }
-
- 
-
 }

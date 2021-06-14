@@ -20,7 +20,7 @@ public class UsuarioService {
 
     //Regra de negocio
     //Método para efetuar cadastrar usuario no sistema e Criptografar a senha do mesmo
-    public Optional<Usuario> CadastrarUsuario(Usuario usuario) {
+    public Usuario CadastrarUsuario(Usuario usuario) {
 
         // Verificando se o usuario ja existe
         if (bancoRepository.findAllByUsuarioContainingIgnoreCase(usuario.getUsuario()).isPresent())
@@ -30,6 +30,10 @@ public class UsuarioService {
         if (bancoRepository.findAllByEmailContainingIgnoreCase(usuario.getEmail()).isPresent())
         return null;
 
+        // Verificando se o cpf é valido
+        if (bancoRepository.findAllByCpf(usuario.getCpf()).isPresent())
+        return null;
+
         // Criptografia da senha
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String senhaEncoder = encoder.encode(usuario.getSenha());
@@ -37,11 +41,11 @@ public class UsuarioService {
         //Atualiza a senha no objeto usuario, substituindo a senha digitada pela criptografada
         usuario.setSenha(senhaEncoder);
 
-        return Optional.of(bancoRepository.save(usuario));
+        return bancoRepository.save(usuario);
     }
 
     //Método para efetuar atualizar usuario no sistema
-    public Optional<Usuario> atualizarUsuario(Usuario usuario){
+    public Usuario atualizarUsuario(Usuario usuario){
 		
 		// Criptografia da senha
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -51,24 +55,26 @@ public class UsuarioService {
 		substitui a senha digitada pela senha criptografada */
 		usuario.setSenha(senhaEncoder);
 		
-		return Optional.of(bancoRepository.save(usuario));
+		return bancoRepository.save(usuario);
 
 	}
 
     // Método para efetuar login no sistema
     public Optional<UserLogin> Logar(Optional<UserLogin> user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        Optional<Usuario> usuario = bancoRepository.findAllByUsuarioContainingIgnoreCase(user.get().getUsuario());
+        Optional<Usuario> usuario = bancoRepository.findAllByEmailContainingIgnoreCase(user.get().getEmail());
 
         if (usuario.isPresent()) {
             if (encoder.matches(user.get().getSenha(), usuario.get().getSenha())) {
 
-                String auth = user.get().getUsuario() + ":" + user.get().getSenha();
+                String auth = user.get().getCpf() + ":" + user.get().getSenha();
                 byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
                 String authHeader = "Basic " + new String(encodedAuth);
 
                 user.get().setToken(authHeader);
                 user.get().setNome(usuario.get().getNome());
+                user.get().setCpf(usuario.get().getCpf());
+                user.get().setUsuario(usuario.get().getUsuario());
                 user.get().setSenha(usuario.get().getSenha());
 
                 return user;

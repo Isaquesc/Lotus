@@ -30,12 +30,12 @@ public class UsuarioController {
     }
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<Optional<Usuario>> post(@RequestBody Usuario usuario){
+    public ResponseEntity <Usuario> post(@RequestBody Usuario usuario){
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.CadastrarUsuario(usuario));
     }
 
     @PutMapping("/atualizar")
-    public ResponseEntity<Optional<Usuario>> put(@RequestBody Usuario usuario){
+    public ResponseEntity <Usuario> put(@RequestBody Usuario usuario){
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.CadastrarUsuario(usuario));
     }
     

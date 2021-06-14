@@ -22,10 +22,10 @@ public class Tema {
     private long id;
 
     @NotNull (message = "Atributo Obrigatório")
-    @Size(min = 4, max = 50, message = "O atributo deve conter no mínimo 04 e no máximo 50 caracteres")
+    @Size(min = 2, max = 50, message = "O atributo deve conter no mínimo 04 e no máximo 50 caracteres")
     private String nome;
     
-    @Size(min = 4, max = 255, message = "O atributo deve conter no mínimo 04 e no máximo 255 caracteres")
+    @Size(min = 2, max = 255, message = "O atributo deve conter no mínimo 04 e no máximo 255 caracteres")
     private String descricao;
 
     private String palavraChave;
