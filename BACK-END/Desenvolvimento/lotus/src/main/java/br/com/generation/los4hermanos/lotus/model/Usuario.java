@@ -1,7 +1,6 @@
 package br.com.generation.los4hermanos.lotus.model;
 
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -22,7 +20,7 @@ public class Usuario {
     private long id;
 
     @NotNull(message = "Atributo Obrigatório")
-    private String nome_usuario;
+    private String nome;
 
     @NotNull(message = "Atributo Obrigatório")
     private String email;
@@ -64,12 +62,12 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getNome_usuario() {
-        return this.nome_usuario;
+    public String getNome() {
+        return this.nome;
     }
 
-    public void setNome_usuario(String nome_usuario) {
-        this.nome_usuario = nome_usuario;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getEmail() {
@@ -164,5 +162,6 @@ public class Usuario {
         this.postagem = postagem;
     }
 
+ 
 
 }

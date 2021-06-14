@@ -23,17 +23,16 @@ public class Tema {
 
     @NotNull (message = "Atributo Obrigatório")
     @Size(min = 4, max = 50, message = "O atributo deve conter no mínimo 04 e no máximo 50 caracteres")
-    private String nome_tema;
+    private String nome;
     
     @Size(min = 4, max = 255, message = "O atributo deve conter no mínimo 04 e no máximo 255 caracteres")
-    private String descricao_tema;
+    private String descricao;
 
     private String palavraChave;
 
     @OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("tema")
     private List<Postagem> postagem;
-
 
     public long getId() {
         return this.id;
@@ -43,20 +42,20 @@ public class Tema {
         this.id = id;
     }
 
-    public String getNome_tema() {
-        return this.nome_tema;
+    public String getNome() {
+        return this.nome;
     }
 
-    public void setNome_tema(String nome_tema) {
-        this.nome_tema = nome_tema;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getDescricao_tema() {
-        return this.descricao_tema;
+    public String getDescricao() {
+        return this.descricao;
     }
 
-    public void setDescricao_tema(String descricao_tema) {
-        this.descricao_tema = descricao_tema;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getPalavraChave() {
@@ -74,6 +73,7 @@ public class Tema {
     public void setPostagem(List<Postagem> postagem) {
         this.postagem = postagem;
     }
+
     
 
 }
