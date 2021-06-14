@@ -30,6 +30,9 @@ public class UsuarioService {
         if (bancoRepository.findAllByEmailContainingIgnoreCase(usuario.getEmail()).isPresent())
         return null;
 
+        if (bancoRepository.findAllByCpf(usuario.getCpf()).isPresent())
+        return null;
+
         // Criptografia da senha
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String senhaEncoder = encoder.encode(usuario.getSenha());
@@ -58,17 +61,19 @@ public class UsuarioService {
     // Método para efetuar login no sistema
     public Optional<UserLogin> Logar(Optional<UserLogin> user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        Optional<Usuario> usuario = bancoRepository.findAllByUsuarioContainingIgnoreCase(user.get().getUsuario());
+        Optional<Usuario> usuario = bancoRepository.findAllByEmailContainingIgnoreCase(user.get().getEmail());
 
         if (usuario.isPresent()) {
             if (encoder.matches(user.get().getSenha(), usuario.get().getSenha())) {
 
-                String auth = user.get().getUsuario() + ":" + user.get().getSenha();
+                String auth = user.get().getCpf() + ":" + user.get().getSenha();
                 byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
                 String authHeader = "Basic " + new String(encodedAuth);
 
                 user.get().setToken(authHeader);
                 user.get().setNome(usuario.get().getNome());
+                user.get().setCpf(usuario.get().getCpf());
+                user.get().setUsuario(usuario.get().getUsuario());
                 user.get().setSenha(usuario.get().getSenha());
 
                 return user;
