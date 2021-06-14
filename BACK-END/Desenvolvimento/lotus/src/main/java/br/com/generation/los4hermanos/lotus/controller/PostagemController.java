@@ -45,6 +45,13 @@ public class PostagemController {
         return ResponseEntity.ok(postagemRepository.findAllByTituloContainingIgnoreCase(titulo));
     }
 
+    /*
+    // buscando postagens por determinado score
+    @GetMapping("/score/{score}")
+    public ResponseEntity<List<Postagem>> getByScore(@PathVariable int score) {
+        return ResponseEntity.ok(postagemRepository.findAllByScore(titulo));
+    }
+    */
     // Criando nova postagem
     @PostMapping
     public ResponseEntity<Postagem> postTema(@RequestBody Postagem postagem) {
