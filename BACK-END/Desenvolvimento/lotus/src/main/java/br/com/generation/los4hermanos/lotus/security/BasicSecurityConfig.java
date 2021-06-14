@@ -21,6 +21,10 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
     // Define que todas as autenticações serão do tipo userDetailsService
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+        auth.inMemoryAuthentication()
+        .withUser("root").password(senhaEncoder().encode("Admin357/")).authorities("ROLE_USER");
+        
         auth.userDetailsService(userDetailsService);
     }
 

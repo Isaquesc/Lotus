@@ -20,7 +20,7 @@ public class UsuarioService {
 
     //Regra de negocio
     //Método para efetuar cadastrar usuario no sistema e Criptografar a senha do mesmo
-    public Optional<Usuario> CadastrarUsuario(Usuario usuario) {
+    public Usuario CadastrarUsuario(Usuario usuario) {
 
         // Verificando se o usuario ja existe
         if (bancoRepository.findAllByUsuarioContainingIgnoreCase(usuario.getUsuario()).isPresent())
@@ -41,11 +41,11 @@ public class UsuarioService {
         //Atualiza a senha no objeto usuario, substituindo a senha digitada pela criptografada
         usuario.setSenha(senhaEncoder);
 
-        return Optional.of(bancoRepository.save(usuario));
+        return bancoRepository.save(usuario);
     }
 
     //Método para efetuar atualizar usuario no sistema
-    public Optional<Usuario> atualizarUsuario(Usuario usuario){
+    public Usuario atualizarUsuario(Usuario usuario){
 		
 		// Criptografia da senha
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -55,7 +55,7 @@ public class UsuarioService {
 		substitui a senha digitada pela senha criptografada */
 		usuario.setSenha(senhaEncoder);
 		
-		return Optional.of(bancoRepository.save(usuario));
+		return bancoRepository.save(usuario);
 
 	}
 
