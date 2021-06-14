@@ -46,7 +46,7 @@ public class Usuario {
 
     private String cnpj;
 
-    private int pontuacao;
+    private int score;  // atributo que determina nota de avaliação de uma empresa
 
     // RELACIONAMENTO
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
@@ -146,12 +146,12 @@ public class Usuario {
         this.cnpj = cnpj;
     }
 
-    public int getPontuacao() {
-        return this.pontuacao;
+    public int getScore() {
+        return this.score;
     }
 
-    public void setPontuacao(int pontuacao) {
-        this.pontuacao = pontuacao;
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public List<Postagem> getPostagem() {
