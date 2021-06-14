@@ -30,6 +30,7 @@ public class UsuarioService {
         if (bancoRepository.findAllByEmailContainingIgnoreCase(usuario.getEmail()).isPresent())
         return null;
 
+        // Verificando se o cpf é valido
         if (bancoRepository.findAllByCpf(usuario.getCpf()).isPresent())
         return null;
 
