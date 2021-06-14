@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Tema {
 
 
-    @Id // IDENTIFICADOR DO TEMA
+    @Id // Identificador do tema 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 

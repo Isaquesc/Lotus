@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "tb_usuario")
 public class Usuario {
 
-    @Id // IDENTIFICADOR
+    @Id // Identificador do Usuario
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 

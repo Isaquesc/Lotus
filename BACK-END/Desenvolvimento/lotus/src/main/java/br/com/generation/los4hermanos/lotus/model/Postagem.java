@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "tb_postagem")
 public class Postagem {
 
-    @Id
+    @Id //Identificador da Postagem
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ind;
 
@@ -30,11 +30,11 @@ public class Postagem {
     @NotNull(message = "Atributo Obrigatório")
     private String empresa;
 
-    @ManyToOne // RELACIONEMTNO COM A POSTAGEM
+    @ManyToOne // Relacionamento com o usuario
     @JsonIgnoreProperties("postagem")
     private Usuario usuario;
 
-    @ManyToOne // RELACIONAMENTO COM O TEMA
+    @ManyToOne // Relacionamento com o tema 
     @JsonIgnoreProperties("postagem")
     private Tema tema;
 
