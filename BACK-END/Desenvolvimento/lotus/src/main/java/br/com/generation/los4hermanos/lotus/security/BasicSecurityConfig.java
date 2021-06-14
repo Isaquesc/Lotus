@@ -10,6 +10,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @EnableWebSecurity
@@ -27,6 +29,11 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
         
         auth.userDetailsService(userDetailsService);
     }
+
+    @GetMapping
+    public ModelAndView swaggerUi(){
+        return new ModelAndView("redirect:/swagger-ui.html");
+    } 
 
     // Define a classe que fará o encode (Criptografia) da senha
 	// As Classes de encode são definidas na dependência commons-codec
