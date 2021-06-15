@@ -1,6 +1,6 @@
 package br.com.generation.los4hermanos.lotus.model;
 
-public class UserLogin {
+public class UsuarioLogin {
 
     private String nome;
     private String usuario;
@@ -9,7 +9,7 @@ public class UserLogin {
     private String senha;
     private String token;
 
-    public UserLogin(Usuario usuario) {
+    public UsuarioLogin(Usuario usuario) {
         this.nome = usuario.getNome();
         this.usuario = usuario.getUsuario();
         this.email = usuario.getEmail();
@@ -17,25 +17,8 @@ public class UserLogin {
         this.cpf = usuario.getCpf();
     }
 
-    public UserLogin() {
+    public UsuarioLogin() {
 
-    }
-
-
-    public String getEmail() {
-        return this.email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getCpf() {
-        return this.cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public String getNome() {
@@ -54,6 +37,22 @@ public class UserLogin {
         this.usuario = usuario;
     }
 
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCpf() {
+        return this.cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
     public String getSenha() {
         return this.senha;
     }
@@ -69,5 +68,6 @@ public class UserLogin {
     public void setToken(String token) {
         this.token = token;
     }
+
 
 }

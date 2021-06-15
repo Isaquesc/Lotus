@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import br.com.generation.los4hermanos.lotus.model.UserLogin;
+import br.com.generation.los4hermanos.lotus.model.UsuarioLogin;
 import br.com.generation.los4hermanos.lotus.model.Usuario;
 import br.com.generation.los4hermanos.lotus.repository.UsuarioRepository;
 import org.apache.commons.codec.binary.Base64;
@@ -45,7 +45,7 @@ public class UsuarioService {
     }
 
     //Método para efetuar atualizar usuario no sistema
-    public Usuario atualizarUsuario(Usuario usuario){
+    public Optional<Usuario> atualizarUsuario(Usuario usuario){
 		
 		// Criptografia da senha
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -55,12 +55,12 @@ public class UsuarioService {
 		substitui a senha digitada pela senha criptografada */
 		usuario.setSenha(senhaEncoder);
 		
-		return bancoRepository.save(usuario);
+		return Optional.of(bancoRepository.save(usuario));
 
 	}
 
     // Método para efetuar login no sistema
-    public Optional<UserLogin> Logar(Optional<UserLogin> user) {
+    public Optional<UsuarioLogin> Logar(Optional<UsuarioLogin> user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         Optional<Usuario> usuario = bancoRepository.findAllByEmailContainingIgnoreCase(user.get().getEmail());
 

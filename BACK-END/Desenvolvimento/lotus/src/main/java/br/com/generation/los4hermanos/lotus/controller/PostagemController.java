@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.generation.los4hermanos.lotus.model.Postagem;
 import br.com.generation.los4hermanos.lotus.repository.PostagemRepository;
 
+
 @RestController
 @RequestMapping("/postagem")
 @CrossOrigin("*")
@@ -25,6 +26,9 @@ public class PostagemController {
     // injetando dependecia da classe de Serviço
     @Autowired
     private PostagemRepository postagemRepository;
+
+    // @Autowired
+    // private UsuarioRepository usuarioRepository;
 
     // buscando todas as postagens
     @GetMapping
@@ -45,13 +49,13 @@ public class PostagemController {
         return ResponseEntity.ok(postagemRepository.findAllByTituloContainingIgnoreCase(titulo));
     }
 
-    /*
-    // buscando postagens por determinado score
-    @GetMapping("/score/{score}")
-    public ResponseEntity<List<Postagem>> getByScore(@PathVariable int score) {
-        return ResponseEntity.ok(postagemRepository.findAllByScore(titulo));
-    }
-    */
+
+    // // buscando postagens por determinado score
+    // @GetMapping("/score/{score}")
+    // public ResponseEntity<List<Usuario>> getByScore(@PathVariable int score) {
+    //     return ResponseEntity.ok(usuarioRepository.findAllByScore(score));
+
+    // }
     // Criando nova postagem
     @PostMapping
     public ResponseEntity<Postagem> postTema(@RequestBody Postagem postagem) {
