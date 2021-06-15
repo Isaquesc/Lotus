@@ -8,18 +8,7 @@ public class UsuarioLogin {
     private String cpf;
     private String senha;
     private String token;
-
-    public UsuarioLogin(Usuario usuario) {
-        this.nome = usuario.getNome();
-        this.usuario = usuario.getUsuario();
-        this.email = usuario.getEmail();
-        this.senha = usuario.getSenha();
-        this.cpf = usuario.getCpf();
-    }
-
-    public UsuarioLogin() {
-
-    }
+    
 
     public String getNome() {
         return this.nome;

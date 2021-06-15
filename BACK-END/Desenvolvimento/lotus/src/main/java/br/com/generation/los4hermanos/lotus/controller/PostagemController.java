@@ -20,7 +20,7 @@ import br.com.generation.los4hermanos.lotus.repository.PostagemRepository;
 
 @RestController
 @RequestMapping("/postagem")
-@CrossOrigin("*")
+@CrossOrigin(origins= "*", allowedHeaders= "*")
 public class PostagemController {
 
     // injetando dependecia da classe de Serviço
@@ -39,8 +39,9 @@ public class PostagemController {
     // buscando a postagem pelo id
     @GetMapping("/{id}")
     public ResponseEntity<Postagem> getById(@PathVariable long id) {
-        return postagemRepository.findById(id).map(resp -> ResponseEntity.ok(resp))
-                .orElse(ResponseEntity.notFound().build());
+        return postagemRepository.findById(id)
+            .map(resp -> ResponseEntity.ok(resp))
+            .orElse(ResponseEntity.notFound().build());
     }
 
     // buscando a postagem pelo titulo

@@ -17,6 +17,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
 public class SwaggerConfig {
+
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).select()
@@ -26,8 +27,8 @@ public class SwaggerConfig {
     }
 
     public static ApiInfo metadata() {
-        return new ApiInfoBuilder().title("API - Rede Social").description("Lotus - Social Network")
-                .version("1.0.0").license("Apache License Version 2.0").licenseUrl("http://localhost:8080/swagger-ui/")
+        return new ApiInfoBuilder().title("API - Rede Social").description("Lotus - Social Network").version("1.0.0")
+                .license("Apache License Version 2.0").licenseUrl("http://localhost:8080/swagger-ui/")
                 .contact(contact()).build();
     }
 

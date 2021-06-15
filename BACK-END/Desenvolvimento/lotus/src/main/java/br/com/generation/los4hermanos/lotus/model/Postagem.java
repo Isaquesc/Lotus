@@ -1,5 +1,4 @@
 package br.com.generation.los4hermanos.lotus.model;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +15,7 @@ public class Postagem {
 
     @Id //Identificador da Postagem
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ind;
+    private long id;
 
     @NotNull(message = "Atributo Obrigatório")
     private String mensagem;
@@ -38,12 +37,12 @@ public class Postagem {
     @JsonIgnoreProperties("postagem")
     private Tema tema;
 
-    public long getInd() {
-        return this.ind;
+    public long getId() {
+        return this.id;
     }
 
-    public void setInd(long ind) {
-        this.ind = ind;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getMensagem() {
@@ -93,5 +92,6 @@ public class Postagem {
     public void setTema(Tema tema) {
         this.tema = tema;
     }
+
 
 }

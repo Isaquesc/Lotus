@@ -39,9 +39,9 @@ public class TemaController {
     }
 
     // Endpoint buscando a postagem pelo tema
-    @GetMapping("/tema/{tema}") 
-    public ResponseEntity<List<Tema>> GetByTema(@PathVariable String tema) {
-        return ResponseEntity.ok(temaRepository.findAllByNomeContainingIgnoreCase(tema));
+    @GetMapping("/nome/{nome}") 
+    public ResponseEntity<List<Tema>> GetByTema(@PathVariable String nome) {
+        return ResponseEntity.ok(temaRepository.findAllByNomeContainingIgnoreCase(nome));
     }
 
     // Endpoint buscando pela palavra chave
