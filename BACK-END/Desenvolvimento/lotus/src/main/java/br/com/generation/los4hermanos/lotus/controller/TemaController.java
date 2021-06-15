@@ -44,11 +44,11 @@ public class TemaController {
         return ResponseEntity.ok(temaRepository.findAllByNomeContainingIgnoreCase(tema));
     }
 
-    // Endpoint buscando pela palabra chave
+    /*// Endpoint buscando pela palabra chave
     @GetMapping("/palavrachave/{palavrachave}") 
-    public ResponseEntity<Optional<Tema>> GetByPalavra(@PathVariable String palavraChave) {
-        return ResponseEntity.ok(temaRepository.findAllByPalavraChaveContainingIgnoreCase(palavraChave));
-    }
+    public ResponseEntity<Optional<Tema>> GetByPalavra(@PathVariable String palavrachave) {
+        return ResponseEntity.ok(temaRepository.findAllByPalavraChaveContainingIgnoreCase(palavrachave));
+    }*/
 
     // Endpoint Criando novo tema
     @PostMapping 
