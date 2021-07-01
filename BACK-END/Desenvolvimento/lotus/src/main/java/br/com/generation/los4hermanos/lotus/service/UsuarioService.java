@@ -75,8 +75,11 @@ public class UsuarioService {
                 user.get().setId(usuario.get().getId());
                 user.get().setNome(usuario.get().getNome());                
                 user.get().setCpf(usuario.get().getCpf());
+                user.get().setCnpj(usuario.get().getCnpj());
                 user.get().setUsuario(usuario.get().getUsuario());
                 user.get().setSenha(usuario.get().getSenha());
+                user.get().setScore(usuario.get().getScore());
+                user.get().setPessoa_fisica(usuario.get().getPessoa_fisica());
 
                 return user;
             }
