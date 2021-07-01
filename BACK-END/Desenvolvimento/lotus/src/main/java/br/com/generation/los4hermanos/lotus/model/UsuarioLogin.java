@@ -1,20 +1,30 @@
 package br.com.generation.los4hermanos.lotus.model;
 
+import javax.security.auth.x500.X500Principal;
+
+import kotlin.jvm.internal.Ref.BooleanRef;
+
 public class UsuarioLogin {
 
     private long id;
     private String nome;
-    private String usuario;
     private String email;
-    private String cpf;
+    private String usuario;
     private String senha;
+    private String telefone;
+    private String cpf;
+    private String cnpj;   
     private String token;
     private String foto;
     private String tipo;
+    private String genero;
+    private boolean pessoa_fisica;
+    private int score;
     
 
 
 // ----------   GETTERS AND SETTERS ---------
+
     public long getId() {
         return this.id;
     }
@@ -31,6 +41,14 @@ public class UsuarioLogin {
         this.nome = nome;
     }
 
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getUsuario() {
         return this.usuario;
     }
@@ -39,12 +57,20 @@ public class UsuarioLogin {
         this.usuario = usuario;
     }
 
-    public String getEmail() {
-        return this.email;
+    public String getSenha() {
+        return this.senha;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getTelefone() {
+        return this.telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getCpf() {
@@ -55,12 +81,12 @@ public class UsuarioLogin {
         this.cpf = cpf;
     }
 
-    public String getSenha() {
-        return this.senha;
+    public String getCnpj() {
+        return this.cnpj;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     public String getToken() {
@@ -86,6 +112,35 @@ public class UsuarioLogin {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public String getGenero() {
+        return this.genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public boolean isPessoa_fisica() {
+        return this.pessoa_fisica;
+    }
+
+    public boolean getPessoa_fisica() {
+        return this.pessoa_fisica;
+    }
+
+    public void setPessoa_fisica(boolean pessoa_fisica) {
+        this.pessoa_fisica = pessoa_fisica;
+    }
+
+    public int getScore() {
+        return this.score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
 
 
 }
