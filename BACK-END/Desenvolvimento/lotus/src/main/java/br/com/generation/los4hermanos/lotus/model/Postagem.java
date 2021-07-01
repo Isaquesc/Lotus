@@ -1,10 +1,14 @@
 package br.com.generation.los4hermanos.lotus.model;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -28,6 +32,9 @@ public class Postagem {
 
     @NotNull(message = "Atributo Obrigatório")
     private String empresa;
+
+    @Temporal(TemporalType.TIMESTAMP)   
+    private Date data;
 
     @ManyToOne // Relacionamento com o usuario
     @JsonIgnoreProperties("postagem")
@@ -91,6 +98,14 @@ public class Postagem {
 
     public void setTema(Tema tema) {
         this.tema = tema;
+    }
+
+    public Date getData() {
+        return this.data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
     }
 
 
