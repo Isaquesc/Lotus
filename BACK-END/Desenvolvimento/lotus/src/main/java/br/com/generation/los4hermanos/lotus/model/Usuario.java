@@ -38,6 +38,8 @@ public class Usuario {
 
     private String foto; // LINK FOTO DE PERFIL
 
+    private String tipo; // TIPO DO USUÁRIO    
+
     @NotNull(message = "Atributo Obrigatório")
     private String genero;
 
@@ -52,13 +54,22 @@ public class Usuario {
     private int score;  // atributo que determina nota de avaliação de uma empresa
 
     // RELACIONAMENTO
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties("usuario")
     private List<Postagem> postagem;
 
 
+    // ----------- GETTERS AND SETTERS  -----------
     public long getId() {
         return this.id;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public void setId(long id) {
