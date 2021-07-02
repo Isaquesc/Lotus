@@ -45,7 +45,7 @@ public class UsuarioService {
     }
 
     //Método para efetuar atualizar usuario no sistema
-    public Optional<Usuario> atualizarUsuario(Usuario usuario){
+    public Optional<Usuario> atualizarSenha(Usuario usuario){
 		
 		// Criptografia da senha
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -73,9 +73,6 @@ public class UsuarioService {
 
                 user.get().setToken(authHeader);
                 user.get().setNome(usuario.get().getNome());
-                user.get().setCpf(usuario.get().getCpf());
-                user.get().setUsuario(usuario.get().getUsuario());
-                user.get().setSenha(usuario.get().getSenha());
 
                 return user;
             }

@@ -21,21 +21,21 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
-        auth.inMemoryAuthentication()
-        .withUser("lotus")
-        .password(senhaEncoder()
-        .encode("lotus"))
-        .authorities("ROLE_USER");
+
+        auth.inMemoryAuthentication().withUser("lotus").password(senhaEncoder().encode("lotus"))
+                .authorities("ROLE_USER");
+
     }
+    
 
     // Define a classe que fará o encode (Criptografia) da senha
-	// As Classes de encode são definidas na dependência commons-codec
+    // As Classes de encode são definidas na dependência commons-codec
     @Bean
     public PasswordEncoder senhaEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    // Método responsável por configurar as requisições (Requests) da API 
+    // Método responsável por configurar as requisições (Requests) da API
     @Override
     protected void configure(HttpSecurity htpp) throws Exception {
         htpp.authorizeRequests()
@@ -53,5 +53,4 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
         .and().csrf().disable(); // DESABILITANDO O CSRF (ESTAMOS UTILIZANDO TODOS AS CONF PADRAO)
     }
 
-    
 }
