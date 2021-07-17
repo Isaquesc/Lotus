@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -49,12 +50,20 @@ public class Usuario {
 
     private String cnpj;
 
-    private int score;  // atributo que determina nota de avaliação de uma empresa
+
+    @ManyToOne
+    @JsonIgnoreProperties("usuario") // pode ser postagem
+    private int qtdReclamacao;  // atributo que determina nota de avaliação de uma empresa (linkado com o tipo da postagem)
+
+    @ManyToOne
+    @JsonIgnoreProperties("usuario") // pode ser postagem
+    private int qtdElogio; // atributo que determina nota de avaliação de uma empresa (linkado com o tipo da postagem)
 
     // RELACIONAMENTO
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("usuario")
     private List<Postagem> postagem;
+
 
 
     public long getId() {
@@ -147,15 +156,7 @@ public class Usuario {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
-    }
-
-    public int getScore() {
-        return this.score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
+    } 
 
     public List<Postagem> getPostagem() {
         return this.postagem;

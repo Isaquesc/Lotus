@@ -1,9 +1,11 @@
 package br.com.generation.los4hermanos.lotus.model;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -26,8 +28,6 @@ public class Postagem {
 
     private String midia;
 
-    @NotNull(message = "Atributo Obrigatório")
-    private String empresa;
 
     @ManyToOne // Relacionamento com o usuario
     @JsonIgnoreProperties("postagem")
@@ -36,6 +36,21 @@ public class Postagem {
     @ManyToOne // Relacionamento com o tema 
     @JsonIgnoreProperties("postagem")
     private Tema tema;
+
+    @NotNull(message = "Atributo Obrigatório")
+    @ManyToOne
+    @JsonIgnoreProperties("postagem")
+    private String empresa;    
+
+    // Quantidade de likes e dislikes a postagem tem
+    private int dislike;
+    private int like;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL) // linkado com as qtds de reclamação e elogios
+    @JsonIgnoreProperties("usuario")
+    private String tipoPostagem;
+
+
 
     public long getId() {
         return this.id;
@@ -93,5 +108,29 @@ public class Postagem {
         this.tema = tema;
     }
 
+
+    public int getDislike() {
+        return this.dislike;
+    }
+
+    public void setDislike(int dislike) {
+        this.dislike = dislike;
+    }
+
+    public int getLike() {
+        return this.like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
+
+    public String getTipoPostagem() {
+        return this.tipoPostagem;
+    }
+
+    public void setTipoPostagem(String tipoPostagem) {
+        this.tipoPostagem = tipoPostagem;
+    }
 
 }
